@@ -3,7 +3,7 @@ import express from 'express';
 import connectionPool from './src/utils/db.js';
 
 const app = express();
-const port = Number(process.env.PORT) || 4000;
+const port = Number(process.env.PORT);
 
 app.get('/health', async (req, res) => {
   try {
@@ -14,7 +14,7 @@ app.get('/health', async (req, res) => {
       database: 'connected',
     });
   } catch (error) {
-    console.error('[GET /health] error', error, message);
+    console.error('[GET /health] error', error.message);
     return res.status(503).json({
       status: 'error',
       database: 'disconnected',
