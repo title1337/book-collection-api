@@ -1,9 +1,13 @@
 import 'dotenv/config';
 import express from 'express';
 import connectionPool from './src/utils/db.js';
+import errorHandlerMiddleware from './src/middlewares/errorHandler.middleware.js';
+import authRouter from './src/routes/auth.routes.js';
 
 const app = express();
 const port = Number(process.env.PORT);
+
+app.use(express.json());
 
 app.get('/health', async (req, res) => {
   try {
@@ -21,6 +25,9 @@ app.get('/health', async (req, res) => {
     });
   }
 });
+
+app.use('/api/auth', authRouter);
+app.use(errorHandlerMiddleware);
 
 app.use((req, res) => {
   return res.status(404).json({

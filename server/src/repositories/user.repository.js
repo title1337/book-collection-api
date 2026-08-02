@@ -1,4 +1,4 @@
-import connectionPool from './src/utils/db.js';
+import connectionPool from '../utils/db.js';
 
 async function findUserByEmail(email) {
   const query = `
