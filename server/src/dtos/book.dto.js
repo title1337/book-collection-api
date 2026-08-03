@@ -45,5 +45,5 @@ export function parseBookId(value) {
   if (!isValid) {
     return null;
   }
-  return bookI;
+  return bookId;
 }
