@@ -1,4 +1,4 @@
-export function valikdateCreateBookInput(book) {
+export function validateCreateBookInput(book) {
   const title = typeof body.title === 'string' ? body.title.trim() : '';
   const author = typeof body.author === 'string' ? body.author.trim() : '';
   const genre = typeof body.genre === 'string' ? body.genre.trim() : '';
@@ -34,8 +34,8 @@ export function valikdateCreateBookInput(book) {
     },
   };
 }
-export function valikdateCreateBookInput(body) {
-  return valikdateCreateBookInput(body);
+export function validateCreateBookInput(body) {
+  return validateCreateBookInput(body);
 }
 
 export function parseBookId(value) {
