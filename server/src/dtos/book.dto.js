@@ -34,7 +34,7 @@ export function validateCreateBookInput(book) {
     },
   };
 }
-// update ใช้กฎเดียวกับ create เพราะ route เป็น PUT (full replace)
+// update ใช้ route เป็น PUT (full replace)
 // ต้องส่งข้อมูลมาครบทุกฟิลด์เหมือนตอนสร้างใหม่
 export function validateUpdateBookInput(body) {
   return validateCreateBookInput(body);
