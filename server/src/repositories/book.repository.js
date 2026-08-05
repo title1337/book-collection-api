@@ -1,4 +1,4 @@
-import connectionPool from './src/utils/db.js';
+import connectionPool from '../utils/db.js';
 
 async function findAllBooksByOwner(owenerId) {
   const query = `
@@ -107,8 +107,8 @@ async function deleteBookByIdAndOwner(bookId, ownerId) {
 
 export default {
   findAllBooksByOwner,
-  findBookByIdAndOwner,
+  findBooksByIdAndOwener,
   createBook,
-  updateBookByIdAndOwner,
+  updateBookByIdAndOwener,
   deleteBookByIdAndOwner,
 };

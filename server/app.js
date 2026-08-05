@@ -3,6 +3,7 @@ import express from 'express';
 import connectionPool from './src/utils/db.js';
 import errorHandlerMiddleware from './src/middlewares/errorHandler.middleware.js';
 import authRouter from './src/routes/auth.routes.js';
+import bookRouter from './src/routes/book.routes.js';
 
 const app = express();
 const port = Number(process.env.PORT);

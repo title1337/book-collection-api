@@ -1,5 +1,5 @@
-import bookRepository from '../repositories/book.repository';
-import AppError from '../utils/AppError';
+import bookRepository from '../repositories/book.repository.js';
+import AppError from '../utils/AppError.js';
 
 async function getAllBooks(owenerId) {
   const books = await bookRepository.findAllBooksByOwner(owenerId);
