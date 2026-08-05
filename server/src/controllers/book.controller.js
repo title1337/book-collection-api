@@ -68,3 +68,18 @@ export const updateBook = asyncHandler(async (req, res) => {
     data: updatedBook,
   });
 });
+
+export const deleteBook = asyncHandler(async (req, res) => {
+  const ownerId = req.user.userId;
+  const bookId = parseBookId(req.params.bookId);
+
+  if (!bookId) {
+    throw new AppError('bookId must be a positive integer', 400);
+  }
+
+  await bookService.deleteBook(bookId, ownerId);
+
+  return res.status(200).json({
+    message: 'Book deleted successfully',
+  });
+});

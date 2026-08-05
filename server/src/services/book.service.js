@@ -35,17 +35,17 @@ async function updateBook(bookId, bookData, ownerId) {
   return updateBook;
 }
 
-async function deleteBook(bookId, owenerId) {
+async function deleteBook(bookId, ownerId) {
   const deletedBook = await bookRepository.deleteBookByIdAndOwner(
     bookId,
-    owenerId,
+    ownerId,
   );
 
-  if (!deleteBook) {
+  if (!deletedBook) {
     throw new AppError('Book not found', 404);
   }
 
-  return deleteBook;
+  return deletedBook;
 }
 
 export default {

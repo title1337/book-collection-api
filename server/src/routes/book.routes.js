@@ -2,6 +2,7 @@ import { Router } from 'express';
 import authenticate from '../middlewares/authenticate.middleware.js';
 import {
   createBook,
+  deleteBook,
   getAllBooks,
   getBooksByID,
   updateBook,
@@ -15,5 +16,6 @@ bookRouter.get('/', getAllBooks);
 bookRouter.get('/:bookId', getBooksByID);
 bookRouter.post('/', createBook);
 bookRouter.put('/:bookId', updateBook);
+bookRouter.delete('/:bookId', deleteBook);
 
 export default bookRouter;
