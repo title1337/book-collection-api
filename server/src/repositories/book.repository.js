@@ -23,7 +23,7 @@ async function findAllBooksByOwner(owenerId) {
 
 async function findBooksByIdAndOwener(bookId, owenerId) {
   const query = `
-        SELECT 
+        SELECT
             books.id,
             books.title,
             books.author,
@@ -32,8 +32,8 @@ async function findBooksByIdAndOwener(bookId, owenerId) {
             books.owner_id,
             books.created_at
         FROM books
-        WHERE books.owen_id = $1
-            AND books.owen_id = $2
+        WHERE books.id = $1
+            AND books.owner_id = $2 
     `;
   const values = [bookId, owenerId];
 

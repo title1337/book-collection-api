@@ -30,3 +30,19 @@ export const getBooksByID = asyncHandler(async (req, res) => {
     data: book,
   });
 });
+
+export const createBook = asyncHandler(async (req, res) => {
+  const ownerId = req.user.userId;
+  const input = validateCreateBookInput(req.body);
+
+  if (input.error) {
+    throw new AppError(input.error, 400);
+  }
+
+  const newBook = await bookService.createBook(input.data, ownerId);
+
+  return res.status(201).json({
+    message: 'Book created successfully',
+    data: newBook,
+  });
+});
