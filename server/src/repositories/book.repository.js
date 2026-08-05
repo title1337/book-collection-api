@@ -1,6 +1,6 @@
 import connectionPool from '../utils/db.js';
 
-async function findAllBooksByOwner(owenerId) {
+async function findAllBooksByOwner(ownerId) {
   const query = `
         SELECT 
             books.id,
@@ -11,17 +11,17 @@ async function findAllBooksByOwner(owenerId) {
             books.owner_id,
             books.created_at
         FROM books
-        WHERE books.owen_id = $1
-        ORDER BY book.created_at DECS
+        WHERE books.owner_id = $1
+        ORDER BY books.created_at DESC
     `;
-  const values = [owenerId];
+  const values = [ownerId];
 
   const result = await connectionPool.query(query, values);
 
   return result.rows;
 }
 
-async function findBooksByIdAndOwener(bookId, owenerId) {
+async function findBookByIdAndOwner(bookId, ownerId) {
   const query = `
         SELECT
             books.id,
@@ -35,7 +35,7 @@ async function findBooksByIdAndOwener(bookId, owenerId) {
         WHERE books.id = $1
             AND books.owner_id = $2 
     `;
-  const values = [bookId, owenerId];
+  const values = [bookId, ownerId];
 
   const result = await connectionPool.query(query, values);
   const book = result.rows[0];
@@ -107,7 +107,7 @@ async function deleteBookByIdAndOwner(bookId, ownerId) {
 
 export default {
   findAllBooksByOwner,
-  findBooksByIdAndOwener,
+  findBookByIdAndOwner,
   createBook,
   updateBookByIdAndOwener,
   deleteBookByIdAndOwner,

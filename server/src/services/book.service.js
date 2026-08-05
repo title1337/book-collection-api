@@ -21,11 +21,11 @@ async function createBook(bookData, owenerId) {
   return newBook;
 }
 
-async function updateBook(bookId, bookData, owenerId) {
-  const updateBook = await bookRepository.updateBook(
+async function updateBook(bookId, bookData, ownerId) {
+  const updateBook = await bookRepository.updateBookByIdAndOwener(
     bookId,
     bookData,
-    owenerId,
+    ownerId,
   );
 
   if (!updateBook) {

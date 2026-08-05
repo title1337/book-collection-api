@@ -4,6 +4,7 @@ import {
   createBook,
   getAllBooks,
   getBooksByID,
+  updateBook,
 } from '../controllers/book.controller.js';
 
 const bookRouter = Router();
@@ -13,5 +14,6 @@ bookRouter.use(authenticate);
 bookRouter.get('/', getAllBooks);
 bookRouter.get('/:bookId', getBooksByID);
 bookRouter.post('/', createBook);
+bookRouter.put('/:bookId', updateBook);
 
 export default bookRouter;

@@ -1,4 +1,4 @@
-export function validateCreateBookInput(book) {
+export function validateCreateBookInput(body) {
   const title = typeof body.title === 'string' ? body.title.trim() : '';
   const author = typeof body.author === 'string' ? body.author.trim() : '';
   const genre = typeof body.genre === 'string' ? body.genre.trim() : '';

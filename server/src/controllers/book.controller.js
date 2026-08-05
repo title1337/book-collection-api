@@ -46,3 +46,25 @@ export const createBook = asyncHandler(async (req, res) => {
     data: newBook,
   });
 });
+
+export const updateBook = asyncHandler(async (req, res) => {
+  const ownerId = req.user.userId;
+  const bookId = parseBookId(req.params.bookId);
+
+  if (!bookId) {
+    throw new AppError('bookId must be a positive integer', 400);
+  }
+
+  const input = validateUpdateBookInput(req.body);
+
+  if (input.error) {
+    throw new AppError(input.error, 400);
+  }
+
+  const updatedBook = await bookService.updateBook(bookId, input.data, ownerId);
+
+  return res.status(200).json({
+    message: 'Book updated successfully',
+    data: updatedBook,
+  });
+});
