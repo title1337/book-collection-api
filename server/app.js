@@ -27,8 +27,8 @@ app.get('/health', async (req, res) => {
   }
 });
 
-app.use('/api/auth', authRouter);
-app.use('/api/books', bookRouter);
+app.use('/auth', authRouter);
+app.use('/books', bookRouter);
 app.use(errorHandlerMiddleware);
 
 app.use((req, res) => {
